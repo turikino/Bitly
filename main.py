@@ -9,9 +9,6 @@ parser = argparse.ArgumentParser(description='Создает bitlink из обы
 parser.add_argument('-l','--link', help='Ваша ссылка:')
 args = parser.parse_args()
 
-
-load_dotenv()
-
 def create_bitlink(user_url):
   '''Создает bitlink из обычной ссылки.'''
   url = 'https://api-ssl.bitly.com/v4/bitlinks'
@@ -62,6 +59,7 @@ def check_url_response(user_url):
     return False
 
 if __name__=='__main__':
+  load_dotenv()
   user_url=args.link
   user_url=user_url.replace('http://', '')
   if check_url_is_bitlink(user_url):
