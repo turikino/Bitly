@@ -4,10 +4,11 @@ import json
 import argparse
 from dotenv import load_dotenv
 
-parser = argparse.ArgumentParser(description='Создает bitlink из обычной ссылки.\
- Показывает количество кликов, если введен bitlink.')
-parser.add_argument('-l','--link', help='Ваша ссылка:')
-args = parser.parse_args()
+def create_parser():
+    parser = argparse.ArgumentParser(description='Создает bitlink из обычной ссылки.\
+    Показывает количество кликов, если введен bitlink.')
+    parser.add_argument('-l','--link', help='Ваша ссылка:')
+    return parser
 
 def create_bitlink(user_url):
   '''Создает bitlink из обычной ссылки.'''
@@ -60,6 +61,8 @@ def check_url_response(user_url):
 
 if __name__=='__main__':
   load_dotenv()
+  parser = create_parser()
+  args = parser.parse_args()
   user_url=args.link
   user_url=user_url.replace('http://', '')
   if check_url_is_bitlink(user_url):
