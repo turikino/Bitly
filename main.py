@@ -2,13 +2,14 @@ import requests
 import os
 import json
 import argparse
+from dotenv import load_dotenv
 
 parser = argparse.ArgumentParser(description='Создает bitlink из обычной ссылки.\
  Показывает количество кликов, если введен bitlink.')
 parser.add_argument('-l','--link', help='Ваша ссылка:')
 args = parser.parse_args()
 
-from dotenv import load_dotenv
+
 load_dotenv()
 
 def create_bitlink(user_url):
